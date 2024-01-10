@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3dc92960432e0ce4ca45314d110a2790, type: 3}
+  m_Name: Test Item
+  m_EditorClassIdentifier: 
+  name: Box
+  discription: Normal Box
+  dropItems:
+  - {fileID: 4779346816748978259, guid: 9c394d8f947ac854182f917792a2404a, type: 3}
+  - {fileID: 4779346816748978259, guid: 8b6ae918640db5246b84ea0a2efedd2b, type: 3}
+  - {fileID: 4779346816748978259, guid: d70bc783e0d8a5d4ab68ab14e06b6428, type: 3}
+  key: {fileID: 4779346816748978259, guid: 913c58e29be815846b4382965be7d8f7, type: 3}
