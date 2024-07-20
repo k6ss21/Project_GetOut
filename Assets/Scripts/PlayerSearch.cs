@@ -176,5 +176,5 @@ public class PlayerSearch : MonoBehaviour
             fpsInputManager.LockMouse(isPauseMenuOpen);
             fpsInputManager.LockMovement(isPauseMenuOpen);
             pauseMenuUI.gameObject.SetActive(isPauseMenuOpen);
-    }
+    }   
 }
