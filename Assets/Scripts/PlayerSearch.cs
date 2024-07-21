@@ -91,6 +91,7 @@ public class PlayerSearch : MonoBehaviour
         {
            PauseResume();
         }
+     
     }
 
     void InteractWithItem(ItemManager item)

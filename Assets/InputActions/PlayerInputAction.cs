@@ -37,6 +37,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Test"",
+                    ""type"": ""Value"",
+                    ""id"": ""cfda0737-10ff-406a-ad7b-82250e306a1c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
                     ""name"": ""Reload"",
                     ""type"": ""Button"",
                     ""id"": ""d498699c-a51b-466e-9a89-794dd4f9e806"",
@@ -126,6 +135,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Torch"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c14969df-614c-45d0-88a3-73583e6cbaa1"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Test"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -385,6 +405,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_Test = m_Player.FindAction("Test", throwIfNotFound: true);
         m_Player_Reload = m_Player.FindAction("Reload", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Escape = m_Player.FindAction("Escape", throwIfNotFound: true);
@@ -465,6 +486,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_Test;
     private readonly InputAction m_Player_Reload;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Escape;
@@ -474,6 +496,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         private @PlayerInputAction m_Wrapper;
         public PlayerActions(@PlayerInputAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @Test => m_Wrapper.m_Player_Test;
         public InputAction @Reload => m_Wrapper.m_Player_Reload;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Escape => m_Wrapper.m_Player_Escape;
@@ -490,6 +513,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @Test.started += instance.OnTest;
+            @Test.performed += instance.OnTest;
+            @Test.canceled += instance.OnTest;
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
@@ -509,6 +535,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @Test.started -= instance.OnTest;
+            @Test.performed -= instance.OnTest;
+            @Test.canceled -= instance.OnTest;
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
@@ -675,6 +704,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     public interface IPlayerActions
     {
         void OnInteract(InputAction.CallbackContext context);
+        void OnTest(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnEscape(InputAction.CallbackContext context);

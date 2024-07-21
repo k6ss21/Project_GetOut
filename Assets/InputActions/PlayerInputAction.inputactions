@@ -15,6 +15,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Test",
+                    "type": "Value",
+                    "id": "cfda0737-10ff-406a-ad7b-82250e306a1c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "Reload",
                     "type": "Button",
                     "id": "d498699c-a51b-466e-9a89-794dd4f9e806",
@@ -104,6 +113,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Torch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c14969df-614c-45d0-88a3-73583e6cbaa1",
+                    "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Test",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
