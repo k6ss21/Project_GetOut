@@ -33,7 +33,7 @@ public class PlayerSearch : MonoBehaviour
     Bag bag;
 
     bool isPauseMenuOpen = false;
-    [SerializeField]CanvasRenderer  pauseMenuUI;
+    [SerializeField] CanvasRenderer pauseMenuUI;
 
     public static Action OnResetAllPuzzle;
 
@@ -41,6 +41,8 @@ public class PlayerSearch : MonoBehaviour
 
     private void Awake()
     {
+
+
         input = new PlayerInputAction();
         fpsInputManager = GetComponent<StarterAssetsInputs>();
         bag = GetComponent<Bag>();
@@ -63,6 +65,7 @@ public class PlayerSearch : MonoBehaviour
 
     private void Start()
     {
+        // pauseMenuUI = GameObject.FindGameObjectWithTag("PauseFrame").GetComponent<CanvasRenderer>();
         AssignKeyItem();
         pauseMenuUI.gameObject.SetActive(false);
     }
@@ -77,6 +80,7 @@ public class PlayerSearch : MonoBehaviour
         {
             SearchItem();
             UseKey();
+            OpenDrawer();
         }
         else
         {
@@ -89,9 +93,9 @@ public class PlayerSearch : MonoBehaviour
         // }
         if (input.Player.Escape.WasPerformedThisFrame())
         {
-           PauseResume();
+            PauseResume();
         }
-     
+
     }
 
     void InteractWithItem(ItemManager item)
@@ -170,12 +174,25 @@ public class PlayerSearch : MonoBehaviour
 
     }
 
+    void OpenDrawer()
+    {
+        if (hitInfo.transform.gameObject.CompareTag("Drawer"))
+        {
+            if (input.Player.Interact.WasPerformedThisFrame())
+            {
+                Debug.Log("Open");
+                hitInfo.transform.gameObject.GetComponent<Drawer>().Open();
+
+            }
+        }
+    }
+
     void PauseResume()
     {
- isPauseMenuOpen = !isPauseMenuOpen;
-            fpsInputManager.LockCursor(!isPauseMenuOpen);
-            fpsInputManager.LockMouse(isPauseMenuOpen);
-            fpsInputManager.LockMovement(isPauseMenuOpen);
-            pauseMenuUI.gameObject.SetActive(isPauseMenuOpen);
-    }   
+        isPauseMenuOpen = !isPauseMenuOpen;
+        fpsInputManager.LockCursor(!isPauseMenuOpen);
+        fpsInputManager.LockMouse(isPauseMenuOpen);
+        fpsInputManager.LockMovement(isPauseMenuOpen);
+        pauseMenuUI.gameObject.SetActive(isPauseMenuOpen);
+    }
 }

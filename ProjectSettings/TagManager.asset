@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Lock
   - Key
+  - PauseFrame
   layers:
   - Default
   - TransparentFX
